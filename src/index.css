@@ -25,6 +25,7 @@
     color:#45151B;
     background-color:#EA9DAE ;
     padding:10px;
+    box-shadow: 5px 5px 5px #45151b57;
 }
 
   @media (min-width: 640px) { /* sm */

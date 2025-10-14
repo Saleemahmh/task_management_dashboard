@@ -1,5 +1,7 @@
 import React from "react";
 import { RiGitRepositoryFill } from "react-icons/ri";
+import { LuBadgePlus } from "react-icons/lu";
+import { TbLogout } from "react-icons/tb";
 const Navbar = () => {
   return (
     <div className="container flex justify-between items-center bg-beige font-chicle text-brown">
@@ -9,10 +11,10 @@ const Navbar = () => {
       </div>
       <ul className="flex justify-end items-center p-5 gap-4 lg:text-xl">
         <li>
-          <button className="button">Logout</button>
+          <button className="button flex gap-2 items-center">Logout <TbLogout></TbLogout></button>
         </li>
         <li>
-          <button className="button">Add Task</button>
+          <button className="button flex gap-2 items-center">Add Task <LuBadgePlus></LuBadgePlus></button>
         </li>
       </ul>
     </div>
