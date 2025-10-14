@@ -2,7 +2,7 @@ import React from "react";
 import { RiGitRepositoryFill } from "react-icons/ri";
 import { LuBadgePlus } from "react-icons/lu";
 import { TbLogout } from "react-icons/tb";
-const Navbar = () => {
+const Navbar = ( {onOpenModal}) => {
   return (
     <div className="container flex justify-between items-center bg-beige font-chicle text-brown">
       <div className="flex items-center gap-1 lg:text-3xl text-2xl py-6">
@@ -14,7 +14,7 @@ const Navbar = () => {
           <button className="button flex gap-2 items-center">Logout <TbLogout></TbLogout></button>
         </li>
         <li>
-          <button className="button flex gap-2 items-center">Add Task <LuBadgePlus></LuBadgePlus></button>
+          <button className="button flex gap-2 items-center" onClick={onOpenModal}>Add Task <LuBadgePlus></LuBadgePlus></button>
         </li>
       </ul>
     </div>

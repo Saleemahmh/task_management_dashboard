@@ -1,0 +1,46 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "taskname": "Drink water",
+      "desc": "Take atleast 2 glass",
+      "priority": "high",
+      "status": "todo"
+    },
+    {
+      "id": "4",
+      "taskname": "Drink water",
+      "desc": "Take atleast 2 glass",
+      "priority": "high",
+      "status": "done"
+    },
+    {
+      "id": "5",
+      "taskname": "Do some exercise",
+      "desc": "Take atleast 2 glass",
+      "priority": "medium",
+      "status": "done"
+    },
+    {
+      "id": "9",
+      "taskname": "Discuss todays meeting",
+      "desc": "prepare presentation",
+      "priority": "medium",
+      "status": "done"
+    },
+    {
+      "id": "3b9f",
+      "taskname": "vvbvb",
+      "desc": "vbvbv",
+      "priority": "high",
+      "status": "inprogress"
+    },
+    {
+      "id": "7156",
+      "taskname": "xccc",
+      "desc": "ccc",
+      "priority": "high",
+      "status": "inprogress"
+    }
+  ]
+}
