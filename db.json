@@ -5,14 +5,14 @@
       "taskname": "Drink water",
       "desc": "Take atleast 2 glass",
       "priority": "high",
-      "status": "todo"
+      "status": "inprogress"
     },
     {
       "id": "4",
       "taskname": "Drink water",
       "desc": "Take atleast 2 glass",
       "priority": "high",
-      "status": "done"
+      "status": "todo"
     },
     {
       "id": "5",
@@ -30,16 +30,30 @@
     },
     {
       "id": "3b9f",
-      "taskname": "vvbvb",
-      "desc": "vbvbv",
-      "priority": "high",
-      "status": "inprogress"
+      "taskname": "Go to park",
+      "desc": "Meet with guest",
+      "priority": "low",
+      "status": "todo"
     },
     {
-      "id": "7156",
-      "taskname": "xccc",
-      "desc": "ccc",
+      "id": "ce4c",
+      "taskname": "Book an Appointment",
+      "desc": "Ask the guest the details of the appointment",
       "priority": "high",
+      "status": "done"
+    },
+    {
+      "id": "3900",
+      "taskname": "dgfdgfg",
+      "desc": "dfgfgdfgfdg",
+      "priority": "high",
+      "status": "todo"
+    },
+    {
+      "id": "3af2",
+      "taskname": "Record data",
+      "desc": "Miscellenous",
+      "priority": "low",
       "status": "inprogress"
     }
   ]

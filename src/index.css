@@ -27,6 +27,9 @@
     padding:10px;
     box-shadow: 5px 5px 5px #45151b57;
 }
+.boxshadow{
+  box-shadow: 5px 5px 5px #45151b57;
+}
 
   @media (min-width: 640px) { /* sm */
     .container {

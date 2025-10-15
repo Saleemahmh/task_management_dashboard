@@ -4,10 +4,13 @@ import { CgClose } from "react-icons/cg";
 const BASEURL = "http://localhost:3000/tasks";
 
 const Dashboard = ({ isModalOpen, onCloseModal }) => {
-    const statuses=["todo","inprogress","done"];
+  const statuses = ["todo", "inprogress", "done"];
   //state for displaying data
   const [allTasks, setAllTasks] = useState([]);
-
+  //state to find if add or update
+  const [isEditTask, setIsEditTask] = useState(false);
+  //state to edit a task
+  const [editingTask, setEditingTask] = useState(null);
   //get data from form useState
   const [taskData, setTaskData] = useState({
     taskname: "",
@@ -20,15 +23,14 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
     const { name, value } = e.target;
     setTaskData({ ...taskData, [name]: value });
   };
-  
-  const handleAddTask = async(e)=>{
+
+  const handleAddTask = async (e) => {
     e.preventDefault();
     await handleNewTask(taskData);
     console.log(taskData);
+  };
 
-  }
-
-   //add new task
+  //add new task
   const handleNewTask = async (taskData) => {
     try {
       const response = await fetch(BASEURL, {
@@ -36,10 +38,9 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(taskData),
       });
-      const newTask= await response.json()
-      setAllTasks((prev)=>[...prev,newTask]);
+      const newTask = await response.json();
+      setAllTasks((prev) => [...prev, newTask]);
       alert("Task has been added!");
-      onCloseModal(true)
     } catch (err) {
       console.log("Task couldn't be added", err.message);
     }
@@ -47,61 +48,91 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
   //get all the task
   useEffect(() => {
     const getAllTasks = async () => {
-    try {
-      const response = await fetch(BASEURL);
-      if(!response.ok) throw new Error("Failed!!")
-        const data=await response.json();
-    setAllTasks(data);
-    console.log(data);
-    } catch (err) {
-      console.log("Getting tasks failed!!", err.message);
-    }
-};
+      try {
+        const response = await fetch(BASEURL);
+        if (!response.ok) throw new Error("Failed!!");
+        const data = await response.json();
+        setAllTasks(data);
+        console.log(data);
+      } catch (err) {
+        console.log("Getting tasks failed!!", err.message);
+      }
+    };
     getAllTasks();
   }, []);
 
-//delete task
-  const handleDelete =async(id)=>{
+  //delete task
+  const handleDelete = async (id) => {
     try {
-        await fetch(`${BASEURL}/${id}`,{
-            method:"DELETE",    
-        })
-     setAllTasks((prev)=>prev.filter((t)=>t.id !== id));   
+      await fetch(`${BASEURL}/${id}`, {
+        method: "DELETE",
+      });
+      setAllTasks((prev) => prev.filter((t) => t.id !== id));
     } catch (err) {
-        console.log("Delete unsuccessful", err.message);
+      console.log("Delete unsuccessful", err.message);
     }
-  }
+  };
 
   //update task
-  const handleUpdate =async(id,updatedtask)=>{
-    
+  const handleUpdate = async (id,updatedtask) => {
     try {
-       
-        const response = await fetch(`${BASEURL}/${updatedtask.id}`,{
-            method: "PUT",
+      const response = await fetch(`${BASEURL}/${id}`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedtask),   
-        })
-        const data= await response.json();
-     setAllTasks((prev)=>prev.map((t)=>t.id === data.id? data:t));   
-     isModalOpen(true)
-    } catch (err) {
-        console.log("Updation unsuccessful", err.message);
+        body: JSON.stringify(updatedtask),
+      });
+      if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Update failed: ${text}`);
     }
+      const data = await response.json();
+      setAllTasks((prev) => prev.map((t) => (t.id === data.id ? data : t)));
+    } catch (err) {
+        console.log("Updating task:", updatedtask);
+      console.log("Updation unsuccessful", err.message);
+    }
+  };
+  //handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isEditTask) {
+      await handleUpdate(editingTask.id,{ ...editingTask, ...taskData });
+    } else {
+      await handleNewTask(taskData);
+    }
+
+    //Reset data
+    setTaskData({ taskname: "", desc: "", priority: "low", status: "todo" });
+    setEditingTask(null);
+    setIsEditTask(false);
+    onCloseModal();
+  };
+  const handleEditClick= async(task)=>{
+    setEditingTask(task);
+    setIsEditTask(true);
+    setTaskData(task);
   }
-
-
-
   return (
     <>
       <div>
-        <Board title={statuses === "todo"?"To-do":statuses === "inprogress"?"In-progress":"Done"}
-        tasks={allTasks} onDelete={handleDelete} onUpdate={handleUpdate}></Board>
+        <Board
+          title={
+            statuses === "todo"
+              ? "To-do"
+              : statuses === "inprogress"
+              ? "In-progress"
+              : "Done"
+          }
+          tasks={allTasks}
+          onDelete={handleDelete}
+          onUpdate={handleEditClick}
+          onStatusChange={handleUpdate}
+        ></Board>
       </div>
-      {isModalOpen && (
+      {(isModalOpen || isEditTask) && (
         <div className="fixed inset-0 bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
           <form
-            method="POST"
+            onSubmit={handleSubmit}
             className="w-[50%] h-fit flex flex-col bg-pink rounded-md border border-brown font-chicle"
           >
             <button>
@@ -110,7 +141,7 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
                 className="place-self-end cursor-pointer hover:text-beige m-3 "
               />
             </button>
-            <div className="p-1 px-5">New Task </div>
+            <div className="p-1 px-5">{isEditTask? "Edit Task" :"New Task"} </div>
             <div className="flex flex-col sm:flex-row items-center gap-4 p-6 w-full max-w-xl mx-auto">
               <label htmlFor="taskname" className="w-full sm:w-1/3">
                 Task Name
@@ -143,6 +174,7 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
               </label>
               <select
                 onChange={handleChange}
+                 value={taskData.priority}
                 name="priority"
                 className="border border-brown p-2 mb-2 w-full sm:w-2/3 rounded-md focus:outline-none focus:ring-2 focus:ring-brown"
               >
@@ -158,6 +190,7 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
               </label>
               <select
                 onChange={handleChange}
+                 value={taskData.status}
                 name="status"
                 className="border border-brown p-2 mb-2 w-full sm:w-2/3 rounded-md focus:outline-none focus:ring-2 focus:ring-brown"
               >
@@ -168,7 +201,11 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
               </select>
             </div>
             <div className="flex items-center gap-4 p-6 mx-auto">
-              <button className="button cursor-pointer" onClick={handleAddTask}>Add Task</button>
+               <button type= "submit" className="button cursor-pointer" >
+               {isEditTask? "Edit Task" :"Add Task"}  
+              </button>
+              
+              
               <button className="button cursor-pointer" onClick={onCloseModal}>
                 Cancel
               </button>
@@ -176,7 +213,6 @@ const Dashboard = ({ isModalOpen, onCloseModal }) => {
           </form>
         </div>
       )}
-      
     </>
   );
 };
