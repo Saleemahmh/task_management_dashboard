@@ -5,56 +5,203 @@
       "taskname": "Drink water",
       "desc": "Take atleast 2 glass",
       "priority": "high",
-      "status": "inprogress"
+      "status": 1
     },
     {
       "id": "4",
       "taskname": "Drink water",
       "desc": "Take atleast 2 glass",
       "priority": "high",
-      "status": "todo"
+      "status": 2
     },
     {
       "id": "5",
       "taskname": "Do some exercise",
       "desc": "Take atleast 2 glass",
       "priority": "medium",
-      "status": "done"
+      "status": 2
     },
     {
       "id": "9",
       "taskname": "Discuss todays meeting",
       "desc": "prepare presentation",
       "priority": "medium",
-      "status": "done"
+      "status": 2
     },
     {
       "id": "3b9f",
       "taskname": "Go to park",
       "desc": "Meet with guest",
       "priority": "low",
-      "status": "todo"
+      "status": 2
     },
     {
       "id": "ce4c",
       "taskname": "Book an Appointment",
       "desc": "Ask the guest the details of the appointment",
       "priority": "high",
-      "status": "done"
+      "status": 2
     },
     {
       "id": "3900",
       "taskname": "dgfdgfg",
       "desc": "dfgfgdfgfdg",
       "priority": "high",
-      "status": "todo"
+      "status": 2
     },
     {
       "id": "3af2",
       "taskname": "Record data",
       "desc": "Miscellenous",
       "priority": "low",
+      "status": 1
+    },
+    {
+      "id": "b5dc",
+      "taskname": "Create guest list",
+      "desc": "get data from source",
+      "priority": "low",
+      "status": 3
+    },
+    {
+      "id": "35cf",
+      "taskname": "Call the event manager",
+      "desc": "talk about number of guest accomadated",
+      "priority": "low",
+      "status": 2
+    },
+    {
+      "id": "5f34",
+      "taskname": "tytryrty",
+      "desc": "rtyrtytry",
+      "priority": "medium",
+      "status": 2
+    },
+    {
+      "id": "8fa8",
+      "taskname": "trtyrty",
+      "desc": "ryryury",
+      "priority": "high",
+      "status": 2
+    },
+    {
+      "id": "97da",
+      "taskname": "hefukgewk",
+      "desc": "khuku",
+      "priority": "low",
+      "status": 2
+    },
+    {
+      "id": "1d4a",
+      "taskname": "iuyujh",
+      "desc": "awsdAD",
+      "priority": "low",
+      "status": 3
+    },
+    {
+      "id": "4885",
+      "taskname": "DFSDF",
+      "desc": "CZXCXZC",
+      "priority": "medium",
+      "status": 2
+    },
+    {
+      "id": "88f3",
+      "taskname": "SFGDFGDF",
+      "desc": "dfhghg",
+      "priority": "high",
+      "status": 2
+    },
+    {
+      "id": "bd51",
+      "taskname": "ghdgh",
+      "desc": "fghgfh",
+      "priority": "medium",
+      "status": 3
+    },
+    {
+      "id": "946d",
+      "taskname": "ghdghd",
+      "desc": "xddf",
+      "priority": "low",
+      "status": 2
+    },
+    {
+      "id": "1e26",
+      "taskname": "sdfds",
+      "desc": "dfdfd",
+      "priority": "medium",
+      "status": 1
+    },
+    {
+      "id": "07ae",
+      "taskname": "Drink water",
+      "desc": "Take atleast 2 glass",
+      "priority": "low",
+      "status": 2
+    },
+    {
+      "id": "7b15",
+      "taskname": "dfdsf",
+      "desc": "vbvbv",
+      "priority": "low",
+      "status": 3
+    },
+    {
+      "id": "9bc0",
+      "taskname": "Drink water",
+      "desc": "Take atleast 2 glass",
+      "priority": "medium",
+      "status": "todo"
+    },
+    {
+      "id": "cfc0",
+      "taskname": "Make a doctor appointment",
+      "desc": "Call Dr. Geetha",
+      "priority": "high",
+      "status": "done"
+    },
+    {
+      "id": "5259",
+      "taskname": "Go to park",
+      "desc": "Meet a Client",
+      "priority": "medium",
+      "status": "done"
+    },
+    {
+      "id": "a763",
+      "taskname": "Learn Mandarin",
+      "desc": "Contact Aruna",
+      "priority": "low",
       "status": "inprogress"
+    },
+    {
+      "id": "a089",
+      "taskname": "Prepar for Exam",
+      "desc": "study geaography",
+      "priority": "high",
+      "status": "done"
+    },
+    {
+      "id": "b82b",
+      "taskname": "Learn Java",
+      "desc": "Enroll into a course",
+      "priority": "medium",
+      "status": "inprogress"
+    },
+    {
+      "id": "639a",
+      "taskname": "Get guest list",
+      "desc": "Call Mani",
+      "priority": "high",
+      "status": "todo"
+    },
+    {
+      "id": "85a8",
+      "taskname": "Got for a walk",
+      "desc": "Miscellaneous",
+      "priority": "low",
+      "status": "done"
     }
   ]
 }

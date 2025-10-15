@@ -1,4 +1,5 @@
 import React from "react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { GiSandsOfTime } from "react-icons/gi";
 import { AiOutlineFileDone } from "react-icons/ai";
 import { TbListDetails } from "react-icons/tb";
@@ -9,10 +10,22 @@ const Board = ({ tasks, onDelete, onUpdate, onStatusChange }) => {
     { id: 2, title: "In-Progress", icon: <GiSandsOfTime /> },
     { id: 3, title: "Done", icon: <AiOutlineFileDone /> },
   ];
+//handle drag and drop
+const handleDrag=(result)=>{
+    if(!result.destination) return;
+    const{source,destination,draggableId} = result;
+    if(source.droppableId === destination.droppableId) return;
+    const movedTask = tasks.find((t)=>t.id === draggableId);
 
+    const updatedTask = {
+        ...movedTask,
+        status:destination.droppableId,
+    };
+    onUpdate(updatedTask);
+}
   return (
     <div className="container">
-      <div className="flex flex-wrap min-h-screen gap-4 justify-center sm:h-[500px] md:h-[600px] lg:h-[700px]">
+      <div className="flex flex-wrap gap-4 justify-center min-h-screen sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
         {boards.map((board, id) => {
           const boardTasks = tasks.filter(
             (task) => task.status === board.title.toLowerCase().replace("-", "")
