@@ -11,8 +11,7 @@ Supports **adding, deleting, and moving tasks** across **To-do**, **In-Progress*
 - **Add Tasks:** Name, Description, Priority  
 - **Delete Tasks**  
 - **Move tasks between boards  ** 
-- **Priority Colors:** High (red), Medium (yellow), Low (green)  
-- **Custom Alerts:** Styled notification for task actions  
+- **Priority Colors:** High (red), Medium (yellow), Low (green)   
 - **Icons for Boards:** Visual representation using react-icons  
 - **Persistent backend:** Using `json-server`  
 
@@ -35,5 +34,5 @@ Supports **adding, deleting, and moving tasks** across **To-do**, **In-Progress*
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/task-management-dashboard.git
+git clone https://github.com/Saleemahmh/task-management-dashboard.git
 cd task-management-dashboard
